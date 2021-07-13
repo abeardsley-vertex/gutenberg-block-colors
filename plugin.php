@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: myguten 
+ * Plugin Name: myguten  - in plugin list left
  * Plugin URI: https://www.vertex.com
- * Description: myguten — is a test plugin for colors
+ * Description: myguten — in plugin list descritpion area
  * Author: abeardsley
  * Author URI: https://www.vertex.com
  * Version: 1.0.0
