@@ -1,10 +1,12 @@
+import { RichText, useBlockProps } from '@wordpress/block-editor';
+
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, PanelColorSettings, getColorClassName, withColors } = wp.blockEditor;
 const { Fragment } = wp.element;
 const { __ } = wp.i18n;
  
 const BlockWithColorSettings = (props) => {
-	const { textColor, setTextColor, backgroundColor, setBackgroundColor } = props;  // Props received from withColors
+	const { textColor, setTextColor, backgroundColor, setBackgroundColor, blockText, setAttributes } = props;  // Props received from withColors
 
 	let divClass = '';
 	let divStyles = {};
@@ -43,14 +45,21 @@ const BlockWithColorSettings = (props) => {
 					]}
 				/>
 			</InspectorControls>
-			<div className={divClass} style={divStyles}>
-				This is static text
+			<div {...useBlockProps} className={divClass} style={divStyles} >
+				<RichText
+					className="block__text"
+					keepPlaceholderOnFocus
+					onChange={ ( blockText ) => setAttributes( { blockText } ) }
+					placeholder={ __( 'Block Text', 'wholesome-plugin' ) }
+					tagName="span"
+					value={ blockText }
+				/>
 			</div>
 		</Fragment>
 	);
 }
  
-registerBlockType('awp/colorsettings', {
+registerBlockType('abeardsley/colorsettings', {
 	title: __('Color Settings Demo - in editor!'),
 	icon: 'carrot',
 	category: 'common',	
@@ -67,11 +76,15 @@ registerBlockType('awp/colorsettings', {
 		customBackgroundColor: {
 			type: 'string'
 		},
+		blockText: {
+			default: 'Default text to edit',
+			type: 'string',
+		},
 	},
 	//edit: BlockWithColorSettings,
 	edit: withColors({textColor: 'color', backgroundColor: 'background-color'})(BlockWithColorSettings),
 	save: (props) => { 
-    	const { textColor, customTextColor, backgroundColor, customBackgroundColor } = props.attributes;
+    	const { textColor, customTextColor, backgroundColor, customBackgroundColor, blockText } = props.attributes;
     	let divClass = '';
     	let divStyles = {};
 
@@ -91,7 +104,7 @@ registerBlockType('awp/colorsettings', {
 
     	return(
     		<div className={divClass} style={divStyles}>
-    			This is static text
+    			{ blockText }
     		</div>
     	);
     }
