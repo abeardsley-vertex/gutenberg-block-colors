@@ -1,0 +1,16 @@
+{
+    "name": "abeardsley/gutenberg-block-colors",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "Abeardsley\\GutenbergBlockColors\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrew Beardsley",
+            "email": "abeardsley@vertex.com"
+        }
+    ],
+    "require": {}
+}
