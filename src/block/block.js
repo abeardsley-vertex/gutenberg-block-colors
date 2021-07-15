@@ -6,10 +6,11 @@ const { Fragment } = wp.element;
 const { __ } = wp.i18n;
  
 const BlockWithColorSettings = (props) => {
-	const { textColor, setTextColor, backgroundColor, setBackgroundColor, blockText, setAttributes } = props;  // Props received from withColors
+	const { textColor, setTextColor, backgroundColor, setBackgroundColor, setAttributes } = props;  // Props received from withColors
 
+	let blockText = props.attributes.blockText;
 	let divClass = '';
-	let divStyles = {};
+	let divStyles = {border: '1px', borderColor: '#999', borderStyle: 'solid', padding: '5px'};
 	if (textColor != undefined) {
 		if (textColor.class != undefined) {
 			divClass = textColor.class;
@@ -30,7 +31,7 @@ const BlockWithColorSettings = (props) => {
 		<Fragment>
 			<InspectorControls>
 				<PanelColorSettings 
-					title={__('Color settings')}
+					title={__('Color settings...')}
 					colorSettings={[
 						{
 							value: textColor.color,
@@ -45,12 +46,12 @@ const BlockWithColorSettings = (props) => {
 					]}
 				/>
 			</InspectorControls>
-			<div {...useBlockProps} className={divClass} style={divStyles} >
+			<div {...useBlockProps() } className={divClass} style={divStyles} >
 				<RichText
 					className="block__text"
-					keepPlaceholderOnFocus
+					//keepPlaceholderOnFocus
 					onChange={ ( blockText ) => setAttributes( { blockText } ) }
-					placeholder={ __( 'Block Text', 'wholesome-plugin' ) }
+					placeholder={ __( 'Enter your text here...', 'wholesome-plugin' ) }
 					tagName="span"
 					value={ blockText }
 				/>
