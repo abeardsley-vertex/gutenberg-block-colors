@@ -16,17 +16,23 @@ const {
 
 const Edit = (props) =>
 {
+    //the "withColors" thing that we use to register this object creates these special things for us
 	const { borderColor, setBorderColor, textColor, setTextColor, backgroundColor, setBackgroundColor, setAttributes } = props;  // Props received from withColors
 
-	//get attributes (except for the color ones) out of the attributes sent in
-    //the ones above are there "Special" since this thing gets instantiates or whatever using "withColors"
+	//the remaining attributes that are not a "color picker" need to be gotten from props.attributes
 	let blockText = props.attributes.blockText;
 	let borderWidth = props.attributes.borderWidth;
 	let borderStyle = props.attributes.borderStyle;
 
-	let divClass = '';
-	let divStyles = {borderWidth: borderWidth + 'px', borderStyle: borderStyle };
+	let divClass = '';                          //a string that will hold the list of CSS classes for any colors picked from a color picker's "theme colors"
 
+	let divStyles = {                           //this object represents the element's "style" attribute and will end up as style="foo: bar" in HTML
+        borderWidth: borderWidth + 'px', 
+        borderStyle: borderStyle 
+    };
+
+    //For each of the colors we need to see if the user has picked either a 
+    //"theme color" (borderColor.class) or gone into the custom color picker (borderColor.color)
 	if (borderColor != undefined) {
 		if (borderColor.class != undefined) {
 			divClass = borderColor.class;
@@ -56,10 +62,24 @@ const Edit = (props) =>
 			<InspectorControls>
 				<PanelBody title="Border">
 					<PanelRow>
+
+
+
+                        {
+                            /*
+                                Each of the attributes of the <BorderStyleControl> below correspond to an argument in the border style control itself:
+
+                                 export default function BorderStyleControl( { onChange, value, label } ) .....
+
+                                "setAttributes" the "value" must be passed in and match the name of the attribute you're looking to modify
+                                and it must be wrapped in curly braces "{}" to make it an object otherwise the value will not be saved to the WP database
+
+                            */
+                        }
 						<BorderStyleControl
 							label={__('Style')}
 							value = { borderStyle }
-							onChange = { (borderStyle) => {console.log("New border style: " + borderStyle); setAttributes( { borderStyle })} }
+							onChange = { (borderStyle) => { setAttributes( { borderStyle } ) } }
 						/>
 					</PanelRow>		
 					<PanelRow>
@@ -101,6 +121,10 @@ const Edit = (props) =>
 					]}
 				/>
 			</InspectorControls>
+
+            {
+                //I still have no idea what "...useBlockProps" really does...something about auto-expanding properties....
+            }
 			<div {...useBlockProps() } className={divClass} style={divStyles} >
 				<RichText
 					className="block__text"

@@ -1,15 +1,16 @@
-import Edit from './edit';
-import save from './save';
+import Edit from './edit';								//import our Edit from a separate file
+import save from './save';								//import our save function 
 
-const { withColors } = wp.blockEditor;
-const { registerBlockType } = wp.blocks;
-const { __ } = wp.i18n;
+const { withColors } = wp.blockEditor;					//used to do some sort of fancy auto manipulation of color attributes
+const { registerBlockType } = wp.blocks;				//required for the main registration of the plugin below
+const { __ } = wp.i18n;									//something to do with internationalization of text
 
 registerBlockType('abeardsley/colorsettings', {
-	title: __('Color Settings Demo - in editor!'),
-	icon: 'carrot',
-	category: 'common',	
-	attributes: {
+	title: __('Color Settings Demo - in editor!'),		//this is the name that will show up in the wordpress post editor
+	icon: 'carrot',										//icon from https://developer.wordpress.org/resource/dashicons/
+	category: 'common',									//...dunno...
+
+	attributes: {										//all the attributes that this will save to database
 		borderColor: {
 			type: 'string'
 		},
