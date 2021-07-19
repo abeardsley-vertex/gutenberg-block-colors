@@ -9,4 +9,5 @@
  * Webpack is compiling as the input file.
  */
 
+import './border-style-control/index.js';
 import './block/block.js';
