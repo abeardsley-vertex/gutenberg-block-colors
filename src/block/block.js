@@ -1,5 +1,6 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 import BorderStyleControl from '../border-style-control';
+import { RangeControl } from '@wordpress/components';
 
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, PanelColorSettings, getColorClassName, withColors } = wp.blockEditor;
@@ -65,7 +66,13 @@ const BlockWithColorSettings = (props) => {
 						/>
 					</PanelRow>		
 					<PanelRow>
-						...border size...
+						<RangeControl
+							label="Width"
+							value={ borderWidth }
+							onChange={ (borderWidth) => setAttributes({ borderWidth }) }
+							min={ 0 }
+							max={ 10 }
+						/>
 					</PanelRow>
 					<PanelRow>
 						<PanelColorSettings 
