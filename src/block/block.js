@@ -1,7 +1,7 @@
 import Edit from './edit';								//import our Edit from a separate file
 import save from './save';								//import our save function 
 
-const { withColors } = wp.blockEditor;					//used to do some sort of fancy auto manipulation of color attributes
+const { withColors } = wp.blockEditor;					//used to do some sort of fancy auto manipulation of color attributes with <PanelColorSettings ...>
 const { registerBlockType } = wp.blocks;				//required for the main registration of the plugin below
 const { __ } = wp.i18n;									//something to do with internationalization of text
 
