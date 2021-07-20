@@ -8,7 +8,12 @@ const { __ } = wp.i18n;									//something to do with internationalization of t
 registerBlockType('abeardsley/colorsettings', {
 	title: __('Color Settings Demo - in editor!'),		//this is the name that will show up in the wordpress post editor
 	icon: 'carrot',										//icon from https://developer.wordpress.org/resource/dashicons/
-	category: 'common',									//...dunno...
+	category: 'vivid-360',									//...dunno...
+
+	// Make it easier to discover a block with keyword aliases.
+	// These can be localised so your keywords work across locales.
+	//shared, consumer, hcp, payor
+	keywords: [ __( 'shared' ), __( 'consumer' ), __( 'hcp' ),  __( 'payor' )],
 
 	attributes: {										//JS object containing all the attributes that this will save to database
 		borderColor: {
@@ -33,7 +38,6 @@ registerBlockType('abeardsley/colorsettings', {
 			default: 'Default text to edit',
 			type: 'string',
 		},
-
 		borderStyle: {
 			type: 'string',
 			default: 'none'

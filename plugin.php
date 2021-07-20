@@ -21,3 +21,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
+
+
+//Create a special Gurenberg category 
+function my_blocks_plugin_block_categories( $categories ) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug' => 'vivid-360',
+                'title' => __( 'VIVID 360', 'mydomain' ),
+                'icon'  => 'carrot',
+            ),
+        )
+    );
+}
+
+add_filter( 'block_categories', 'my_blocks_plugin_block_categories', 10, 2 );
+
