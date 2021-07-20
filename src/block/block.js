@@ -10,7 +10,7 @@ registerBlockType('abeardsley/colorsettings', {
 	icon: 'carrot',										//icon from https://developer.wordpress.org/resource/dashicons/
 	category: 'common',									//...dunno...
 
-	attributes: {										//all the attributes that this will save to database
+	attributes: {										//JS object containing all the attributes that this will save to database
 		borderColor: {
 			type: 'string'
 		},
