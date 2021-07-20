@@ -1,5 +1,5 @@
-
-const { getColorClassName } = wp.blockEditor;
+//import { useBlockProps } from '@wordpress/block-editor';
+const { getColorClassName, useBlockProps, RichText} = wp.blockEditor;
 
 export default function save(props)
 { 
@@ -30,9 +30,9 @@ export default function save(props)
         divStyles.backgroundColor = customBackgroundColor;
     }
 
+    const blockProps = useBlockProps.save();
+
     return(
-        <div className={divClass} style={divStyles}>
-            { blockText }
-        </div>
+        <RichText.Content { ...blockProps } className={divClass} style={divStyles} tagName="div" value={ props.attributes.blockText } /> 
     );
 }

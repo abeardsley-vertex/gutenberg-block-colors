@@ -37,6 +37,8 @@ registerBlockType('abeardsley/colorsettings', {
 		blockText: {
 			default: 'Default text to edit',
 			type: 'string',
+			source: 'html',
+			selector: 'div'
 		},
 		borderStyle: {
 			type: 'string',
