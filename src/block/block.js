@@ -8,11 +8,11 @@ const { __ } = wp.i18n;									//something to do with internationalization of t
 registerBlockType('abeardsley/colorsettings', {
 	title: __('Color Settings Demo - in editor!'),		//this is the name that will show up in the wordpress post editor
 	icon: 'carrot',										//icon from https://developer.wordpress.org/resource/dashicons/
-	category: 'vivid-360',									//...dunno...
+	category: 'vivid-360',								//Custom category in editor list (matches category added in plugin.php)
 
-	// Make it easier to discover a block with keyword aliases.
-	// These can be localised so your keywords work across locales.
-	//shared, consumer, hcp, payor
+	// Make it easier to discover a block with 			//How to satisfy this?:  "Components will need to be tagged to help users search for “shared” "
+	// keyword aliases. These can be localised 
+	//so your keywords work across locales.
 	keywords: [ __( 'shared' ), __( 'consumer' ), __( 'hcp' ),  __( 'payor' )],
 
 	attributes: {										//JS object containing all the attributes that this will save to database
