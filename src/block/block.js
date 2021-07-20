@@ -10,7 +10,7 @@ registerBlockType('abeardsley/colorsettings', {
 	icon: 'carrot',										//icon from https://developer.wordpress.org/resource/dashicons/
 	category: 'vivid-360',								//Custom category in editor list (matches category added in plugin.php)
 
-	// Make it easier to discover a block with 			//How to satisfy this?:  "Components will need to be tagged to help users search for “shared” "
+	// Make it easier to discover a block with 			//How to satisfy this?:  "Components will need to be tagged to help users search for “shared” components"
 	// keyword aliases. These can be localised 
 	//so your keywords work across locales.
 	keywords: [ __( 'shared' ), __( 'consumer' ), __( 'hcp' ),  __( 'payor' )],
